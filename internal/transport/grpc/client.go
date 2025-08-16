@@ -5,10 +5,11 @@ import (
 
 	userpb "github.com/Kilril312/project-protos/proto/user"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 )
 
 func NewUserClient(addr string) (userpb.UserServiceClient, *grpc.ClientConn, error) {
-	conn, err := grpc.Dial(addr, grpc.WithInsecure())
+	conn, err := grpc.NewClient(addr, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		return nil, nil, fmt.Errorf("failed to connect to user service: %w", err)
 	}

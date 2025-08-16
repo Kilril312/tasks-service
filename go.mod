@@ -15,7 +15,7 @@ require (
 )
 
 require (
-	github.com/Kilril312/project-protos v0.0.0-20250816082610-32ca93dd804d // indirect
+	github.com/Kilril312/project-protos v0.0.0-20250816093229-74a1a2b484dc // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.5 // indirect
 	golang.org/x/net v0.42.0 // indirect

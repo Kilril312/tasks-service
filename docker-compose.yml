@@ -1,0 +1,73 @@
+version: '3.8'
+
+services:
+  users-service:
+    build: ./users-service
+    volumes:
+      - ./users-service:/app
+    ports:
+      - "50051:50051"
+    environment:
+      - DB_HOST=postgres-users
+      - DB_USER=postgres
+      - DB_PASSWORD=qwerty
+      - DB_NAME=users
+      - DB_PORT=5432
+    depends_on:
+      postgres-users:
+        condition: service_healthy
+
+  tasks-service:
+    build: ./tasks-service
+    volumes:
+      - ./tasks-service:/app
+    ports:
+      - "50052:50052"
+    environment:
+      - DB_HOST=postgres-tasks
+      - DB_USER=postgres
+      - DB_PASSWORD=qwerty
+      - DB_NAME=tasks
+      - DB_PORT=5432
+      - USER_SERVICE_ADDR=users-service:50051
+    depends_on:
+      postgres-tasks:
+        condition: service_healthy
+      users-service:
+        condition: service_healthy
+
+  postgres-users:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=qwerty
+      - POSTGRES_DB=users
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_users_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  postgres-tasks:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=qwerty
+      - POSTGRES_DB=tasks
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres_tasks_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_users_data:
+  postgres_tasks_data:

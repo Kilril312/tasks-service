@@ -37,6 +37,12 @@ func (r *Repository) GetbyID(id uint) (*Task, error) {
 	return &task, err
 }
 
+func (r *Repository) GetTaskbyUserID(user_id uint) ([]Task, error) {
+	var tasks []Task
+	err := r.db.Where("user_id = ?", user_id).Find(&tasks).Error
+	return tasks, err
+}
+
 func (r *Repository) List() ([]Task, error) {
 	var tasks []Task
 

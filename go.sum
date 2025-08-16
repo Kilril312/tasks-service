@@ -2,6 +2,8 @@ github.com/Kilril312/project-protos v0.0.0-20250808081143-0e3643990b5c h1:m4G1uR
 github.com/Kilril312/project-protos v0.0.0-20250808081143-0e3643990b5c/go.mod h1:i3vNh+EnZ37Y/MAQpNksAAvQTJFNmJcYuF0vPUAyksc=
 github.com/Kilril312/project-protos v0.0.0-20250816082610-32ca93dd804d h1:X05rZkU0y1XOzY5hS+TISULXWljuUHR3MC4aNdbYTB0=
 github.com/Kilril312/project-protos v0.0.0-20250816082610-32ca93dd804d/go.mod h1:i3vNh+EnZ37Y/MAQpNksAAvQTJFNmJcYuF0vPUAyksc=
+github.com/Kilril312/project-protos v0.0.0-20250816093229-74a1a2b484dc h1:wQEg1HyelxkgOJxt3RLW4Kx5aYG/zWmxH7nBCx9O69E=
+github.com/Kilril312/project-protos v0.0.0-20250816093229-74a1a2b484dc/go.mod h1:i3vNh+EnZ37Y/MAQpNksAAvQTJFNmJcYuF0vPUAyksc=
 github.com/Kilril312/users-service v0.0.0-20250816084551-4b2ba5328024 h1:4V3PoxNnufgSnAAx28G/NCqucDeR9l+bcqKmukERKoU=
 github.com/Kilril312/users-service v0.0.0-20250816084551-4b2ba5328024/go.mod h1:N+ZcGuvDAUoQGveZE4/G+k5TQP6G6cAz3j6pupljKz0=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=

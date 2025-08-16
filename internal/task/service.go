@@ -10,12 +10,18 @@ func NewService(repo *Repository) *Service {
 	return &Service{repo: repo}
 }
 
-func (s *Service) CreateTask(ctx context.Context, task *Task) error {
-	return s.repo.Create(task)
+func (s *Service) CreateTask(ctx context.Context, task *Task) (*Task, error) {
+	err := s.repo.Create(task)
+
+	return task, err
 }
 
 func (s *Service) GetTaskbyID(ctx context.Context, id uint) (*Task, error) {
 	return s.repo.GetbyID(id)
+}
+
+func (s *Service) GetTaskbyUserID(ctx context.Context, user_id uint) ([]Task, error) {
+	return s.repo.GetTaskbyUserID(user_id)
 }
 
 func (s *Service) UpdateTask(ctx context.Context, task *Task) error {

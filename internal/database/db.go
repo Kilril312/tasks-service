@@ -26,7 +26,7 @@ func InitDB() (*gorm.DB, error) {
 		log.Fatalf("Failed to connect to database: %v", err)
 	}
 
-	if err := db.AutoMigrate(task.Task{}); err != nil {
+	if err := db.AutoMigrate(&task.Task{}); err != nil {
 		log.Printf("Migration error: %v", err)
 		db.Migrator().DropTable(&task.Task{})
 		db.AutoMigrate(&task.Task{})
