@@ -42,8 +42,8 @@ func (h *Handler) CreateTask(ctx context.Context, req *taskpb.CreateTaskRequest)
 	}, nil
 }
 
-func (h *Handler) GetTaskbyID(ctx context.Context, req *taskpb.GetTaskRequest) (*taskpb.GetTaskResponse, error) {
-	taskId, err := h.svc.GetTaskbyID(ctx, uint(req.Id))
+func (h *Handler) GetTask(ctx context.Context, req *taskpb.GetTaskRequest) (*taskpb.GetTaskResponse, error) {
+	taskId, err := h.svc.GetTask(ctx, uint(req.Id))
 	if err != nil {
 		return nil, err
 	}
@@ -66,7 +66,7 @@ func (h *Handler) UpdateTask(ctx context.Context, req *taskpb.UpdateTaskRequest)
 		return nil, err
 	}
 
-	updatedTask, err := h.svc.GetTaskbyID(ctx, uint(req.Id))
+	updatedTask, err := h.svc.GetTask(ctx, uint(req.Id))
 	if err != nil {
 		return nil, fmt.Errorf("failed to get updatedtask: %w", err)
 	}

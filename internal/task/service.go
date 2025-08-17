@@ -16,7 +16,7 @@ func (s *Service) CreateTask(ctx context.Context, task *Task) (*Task, error) {
 	return task, err
 }
 
-func (s *Service) GetTaskbyID(ctx context.Context, id uint) (*Task, error) {
+func (s *Service) GetTask(ctx context.Context, id uint) (*Task, error) {
 	return s.repo.GetbyID(id)
 }
 

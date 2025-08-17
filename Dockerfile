@@ -1,4 +1,4 @@
-FROM golang:1.21-alpine
+FROM golang:1.24.5-alpine
 
 WORKDIR /app
 
@@ -7,8 +7,6 @@ RUN go mod download
 
 COPY . .
 
-RUN go build -o /app/bin/server ./cmd/server/main.go
-
 EXPOSE 50052
 
-CMD ["/app/bin/server"]
+CMD ["go", "run", "./cmd/server/main.go"]

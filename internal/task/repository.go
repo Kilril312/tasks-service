@@ -15,9 +15,11 @@ func (r *Repository) Create(task *Task) error {
 }
 
 func (r *Repository) Update(task *Task) error {
-	result := r.db.Model(task).Where("id = ?", task.ID).Updates(map[string]interface{}{
-		"title": task.Title,
-	})
+	result := r.db.Model(task).
+		Where("id = ?", task.ID).
+		Updates(map[string]interface{}{
+			"title": task.Title,
+		})
 
 	if result.Error != nil {
 		return result.Error
@@ -32,7 +34,7 @@ func (r *Repository) Delete(id uint) error {
 func (r *Repository) GetbyID(id uint) (*Task, error) {
 	var task Task
 
-	err := r.db.First(task, id).Error
+	err := r.db.First(&task, id).Error
 
 	return &task, err
 }
